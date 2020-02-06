@@ -2,10 +2,13 @@ import React from "react";
 import ModuleList from "./ModuleList";
 import './CourseEditor.css'
 
-const CourseEditor = ({hideCourseEditor}) =>
+const CourseEditor = ({hideCourseEditor, match, history}) =>
     <div>
-        <button onClick={hideCourseEditor}>Close</button>
-        <h2>Course Editor</h2>
+        <a href="/">
+            Back
+        </a>
+        <button onClick={() => history.push("/")}>Close</button>
+        <h2>Course Editor {match.params.courseId}</h2>
         <div className="row">
             <div className="col-4">
                 <h4>Module List</h4>

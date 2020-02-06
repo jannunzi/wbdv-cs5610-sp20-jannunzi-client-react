@@ -1,5 +1,6 @@
 import React from "react";
 import {updateCourse} from "../services/CourseService";
+import {Link} from "react-router-dom";
 
 class CourseTableRow extends React.Component {
     constructor(props) {
@@ -15,9 +16,9 @@ class CourseTableRow extends React.Component {
         return(
             <li>
                 {   !this.state.editing &&
-                <a href="#" onClick={this.props.showCourseEditor}>
+                <Link to={`/course-editor/${this.state.course._id}`}>
                     {this.state.course.title}
-                </a>
+                </Link>
                 }
                 {
                     this.state.editing &&
