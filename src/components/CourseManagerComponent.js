@@ -116,14 +116,33 @@ class CourseManagerComponent extends React.Component {
                 {/*</Router>*/}
 
                 <Router>
-
                     <Route
                         path="/course-editor/:courseId"
                         exact={true}
                         render={(props) =>
-                            <CourseEditor {...props}/>
+                            <CourseEditor
+                                courseId={props.match.params.courseId}
+                                {...props}/>
                         }/>
-
+                    <Route
+                        path="/course-editor/:courseId/module/:moduleId"
+                        exact={true}
+                        render={(props) =>
+                           <CourseEditor
+                               {...props}
+                               moduleId={props.match.params.moduleId}
+                               courseId={props.match.params.courseId}/>
+                        }/>
+                    <Route
+                        path="/course-editor/:courseId/module/:moduleId/lesson/:lessonId"
+                        exact={true}
+                        render={(props) =>
+                           <CourseEditor
+                               {...props}
+                               lessonId={props.match.params.lessonId}
+                               moduleId={props.match.params.moduleId}
+                               courseId={props.match.params.courseId}/>
+                        }/>
                     <Route
                         path="/"
                         exact={true}
