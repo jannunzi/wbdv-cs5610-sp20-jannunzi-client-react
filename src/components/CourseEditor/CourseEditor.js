@@ -3,19 +3,22 @@ import ModuleList from "./ModuleList";
 import './CourseEditor.css'
 import moduleReducer from "../../reducers/moduleReducer";
 import lessonReducer from "../../reducers/lessonReducer";
+import widgetReducer from "../../reducers/widgetReducer";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import LessonTabs from "./LessonTabs";
 import TopicPills from "./TopicPills";
+import WidgetListComponent from "./WidgetListComponent";
 
 const rootReducer = combineReducers({
     modules: moduleReducer,
-    lessons: lessonReducer
+    lessons: lessonReducer,
+    widgets: widgetReducer
 })
 
 const store = createStore(rootReducer)
 
-const CourseEditor = ({hideCourseEditor, match, history, courseId, moduleId, lessonId}) =>
+const CourseEditor = ({hideCourseEditor, match, history, courseId, moduleId, lessonId, topicId}) =>
     <Provider store={store}>
         <div>
             <a href="/">
@@ -30,13 +33,16 @@ const CourseEditor = ({hideCourseEditor, match, history, courseId, moduleId, les
                         courseId={courseId}/>
                 </div>
                 <div className="col-8">
-                    <LessonTabs
-                        moduleId={moduleId}
-                        courseId={courseId}/>
-                    <TopicPills
-                        lessonId={lessonId}
-                        moduleId={moduleId}
-                        courseId={courseId}/>
+                    {/*<LessonTabs*/}
+                    {/*    moduleId={moduleId}*/}
+                    {/*    courseId={courseId}/>*/}
+                    {/*<TopicPills*/}
+                    {/*    lessonId={lessonId}*/}
+                    {/*    moduleId={moduleId}*/}
+                    {/*    courseId={courseId}/>*/}
+
+                    <WidgetListComponent
+                        topicId={topicId}/>
                 </div>
             </div>
         </div>
