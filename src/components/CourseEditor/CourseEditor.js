@@ -9,11 +9,13 @@ import {Provider} from "react-redux";
 import LessonTabs from "./LessonTabs";
 import TopicPills from "./TopicPills";
 import WidgetListComponent from "./WidgetListComponent";
+import topicReducer from "../../reducers/topicReducer";
 
 const rootReducer = combineReducers({
     modules: moduleReducer,
     lessons: lessonReducer,
-    widgets: widgetReducer
+    widgets: widgetReducer,
+    topics: topicReducer
 })
 
 const store = createStore(rootReducer)
@@ -27,19 +29,22 @@ const CourseEditor = ({hideCourseEditor, match, history, courseId, moduleId, les
             <button onClick={() => history.push("/")}>Close</button>
             <h2>Course Editor {match.params.courseId}</h2>
             <div className="row">
-                <div className="col-4">
+                <div className="col-2">
                     <h4>Module List</h4>
                     <ModuleList
                         courseId={courseId}/>
                 </div>
-                <div className="col-8">
-                    {/*<LessonTabs*/}
-                    {/*    moduleId={moduleId}*/}
-                    {/*    courseId={courseId}/>*/}
-                    {/*<TopicPills*/}
-                    {/*    lessonId={lessonId}*/}
-                    {/*    moduleId={moduleId}*/}
-                    {/*    courseId={courseId}/>*/}
+                <div className="col-10">
+                    <LessonTabs
+                        moduleId={moduleId}
+                        lessonId={lessonId}
+                        courseId={courseId}/>
+                    <TopicPills
+                        lessonId={lessonId}
+                        moduleId={moduleId}
+                        courseId={courseId}
+                        topicId={topicId}
+                    />
 
                     <WidgetListComponent
                         topicId={topicId}/>

@@ -26,12 +26,11 @@ class WidgetListComponent extends React.Component {
         })
     }
 
-
     render() {
         return(
             <div>
                 {
-                    this.props.widgets.map(widget =>
+                    this.props.widgets && this.props.widgets.length > 0 && this.props.widgets.map(widget =>
                         <div key={widget.id}>
                             <Widget
                                 save={this.save}
@@ -64,7 +63,6 @@ const dispatchToPropertyMapper = (dispatch) => ({
         fetch(`http://localhost:8080/api/topics/${tid}/widgets`, {
             method: "POST",
             body: JSON.stringify({
-                id: (new Date()).getTime()+"",
                 title: "New Widget"
             }),
             headers: {

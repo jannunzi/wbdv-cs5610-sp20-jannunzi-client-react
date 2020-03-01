@@ -8,6 +8,8 @@ import CourseListComponent from "./CourseListComponent";
 import Page1 from "./Page1";
 import Page2 from "./Page2";
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import OmdbClient from "./Prototype/omdb-client";
+import OmdbDetails from "./Prototype/omdb-details";
 
 class CourseManagerComponent extends React.Component {
     state = {
@@ -95,8 +97,6 @@ class CourseManagerComponent extends React.Component {
     render() {
         return (
             <div>
-                <h1>Course Manager</h1>
-
                 {/*<Router>*/}
 
                 {/*    <Link to="/page1">*/}
@@ -116,6 +116,18 @@ class CourseManagerComponent extends React.Component {
                 {/*</Router>*/}
 
                 <Router>
+                    <Route
+                        path="/omdb"
+                        exact={true}
+                        component={OmdbClient}
+                    />
+                    <Route
+                        path="/omdb/:imdbID"
+                        exact={true}
+                        render={(props) =>
+                            <OmdbDetails
+                                imdbID={props.match.params.imdbID}/>}
+                    />
                     <Route
                         path="/course-editor/:courseId"
                         exact={true}
