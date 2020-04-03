@@ -10,6 +10,10 @@ import Page2 from "./Page2";
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import OmdbClient from "./Prototype/omdb-client";
 import OmdbDetails from "./Prototype/omdb-details";
+import Home from "./Home";
+import Register from "./users/Register";
+import Profile from "./users/Profile";
+import Login from "./users/Login";
 
 class CourseManagerComponent extends React.Component {
     state = {
@@ -117,6 +121,26 @@ class CourseManagerComponent extends React.Component {
 
                 <Router>
                     <Route
+                        path="/"
+                        exact={true}
+                        component={Home}
+                    />
+                    <Route
+                        path="/register"
+                        exact={true}
+                        component={Register}
+                    />
+                    <Route
+                        path="/profile"
+                        exact={true}
+                        component={Profile}
+                    />
+                    <Route
+                        path="/login"
+                        exact={true}
+                        component={Login}
+                    />
+                    <Route
                         path="/omdb"
                         exact={true}
                         component={OmdbClient}
@@ -165,7 +189,7 @@ class CourseManagerComponent extends React.Component {
                                courseId={props.match.params.courseId}/>
                         }/>
                     <Route
-                        path="/"
+                        path="/courses"
                         exact={true}
                         render={() =>
                             <CourseListComponent

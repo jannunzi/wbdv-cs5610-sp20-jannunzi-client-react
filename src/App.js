@@ -4,6 +4,8 @@ import './App.css';
 import CourseManagerComponent from "./components/CourseManagerComponent";
 
 const App = () =>
-    <CourseManagerComponent/>
+    <div className="container-fluid">
+        <CourseManagerComponent/>
+    </div>
 
 export default App;
